@@ -1,0 +1,83 @@
+#! /usr/local/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x10bf7d0 .scope module, "bcdtest" "bcdtest" 2 1;
+ .timescale 0 0;
+v0x10f65b0_0 .var "a", 3 0;
+v0x10f6650_0 .var "b", 3 0;
+v0x10f6700_0 .var "cin", 0 0;
+v0x10f67b0_0 .net "cout", 0 0, L_0x10f6a30; 1 drivers
+v0x10f6890_0 .net "sum", 3 0, L_0x10f6940; 1 drivers
+S_0x10bf400 .scope module, "b1" "bcdadd" 2 7, 3 1, S_0x10bf7d0;
+ .timescale 0 0;
+v0x10c15b0_0 .net "a", 3 0, v0x10f65b0_0; 1 drivers
+v0x10f6240_0 .net "b", 3 0, v0x10f6650_0; 1 drivers
+v0x10f62e0_0 .net "cin", 0 0, v0x10f6700_0; 1 drivers
+v0x10f6380_0 .alias "cout", 0 0, v0x10f67b0_0;
+v0x10f6430_0 .var "s", 4 0;
+v0x10f64d0_0 .alias "sum", 3 0, v0x10f6890_0;
+E_0x10bf630 .event edge, v0x10c15b0_0, v0x10f6240_0, v0x10f62e0_0, v0x10f6430_0;
+L_0x10f6940 .part v0x10f6430_0, 0, 4;
+L_0x10f6a30 .part v0x10f6430_0, 4, 1;
+    .scope S_0x10bf400;
+T_0 ;
+    %wait E_0x10bf630;
+    %load/v 8, v0x10c15b0_0, 4;
+    %mov 12, 0, 1;
+    %load/v 13, v0x10f6240_0, 4;
+    %mov 17, 0, 1;
+    %add 8, 13, 5;
+    %load/v 13, v0x10f62e0_0, 1;
+    %mov 14, 0, 4;
+    %add 8, 13, 5;
+    %set/v v0x10f6430_0, 8, 5;
+    %movi 8, 9, 6;
+    %load/v 14, v0x10f6430_0, 5;
+    %mov 19, 0, 1;
+    %cmp/u 8, 14, 6;
+    %jmp/0xz  T_0.0, 5;
+    %load/v 8, v0x10f6430_0, 5;
+    %mov 13, 0, 27;
+    %addi 8, 6, 32;
+    %set/v v0x10f6430_0, 8, 5;
+T_0.0 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x10bf7d0;
+T_1 ;
+    %delay 10, 0;
+    %movi 8, 4, 4;
+    %set/v v0x10f65b0_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0x10f6650_0, 8, 4;
+    %set/v v0x10f6700_0, 0, 1;
+    %delay 10, 0;
+    %movi 8, 6, 4;
+    %set/v v0x10f65b0_0, 8, 4;
+    %movi 8, 7, 4;
+    %set/v v0x10f6650_0, 8, 4;
+    %set/v v0x10f6700_0, 0, 1;
+    %delay 10, 0;
+    %movi 8, 8, 4;
+    %set/v v0x10f65b0_0, 8, 4;
+    %movi 12, 8, 4;
+    %set/v v0x10f6650_0, 12, 4;
+    %set/v v0x10f6700_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 12 "$finish";
+    %end;
+    .thread T_1;
+    .scope S_0x10bf7d0;
+T_2 ;
+    %vpi_call 2 15 "$monitor", $time, " in %b %b carry %b sum %b cout %b num %b%d", v0x10f65b0_0, v0x10f6650_0, v0x10f6700_0, v0x10f6890_0, v0x10f67b0_0, v0x10f67b0_0, v0x10f6890_0;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "bcdtest.v";
+    "bcd.v";

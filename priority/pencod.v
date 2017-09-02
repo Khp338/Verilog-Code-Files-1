@@ -1,0 +1,30 @@
+module pencod(input [7:0]d,output reg q0,q1,q2);
+always @(d) begin
+casex(d)
+8'b0000001x:begin
+		q0=1'b1;
+		end
+8'b000001xx:begin
+		q1=1'b1;q0=1'b0;
+		end
+8'b00001xxx:begin
+		q1=1'b1;q0=1'b1;
+		end
+8'b0001xxxx:begin
+		q2=1'b1;q1=1'b0;q0=1'b0;
+		end
+8'b001xxxxx:begin
+		q0=1'b1;
+		end
+8'b01xxxxxx:begin
+		q1=1'b1;q0=1'b0;
+		end
+8'b1xxxxxxx:begin
+		q0=1'b1;
+		end
+default:begin
+	q2=1'b0;q1=1'b0;q0=1'b0;
+	end
+endcase
+end
+endmodule

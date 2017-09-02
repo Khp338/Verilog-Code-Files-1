@@ -1,0 +1,199 @@
+#! /usr/local/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xf4b170 .scope module, "Demuxtest" "Demuxtest" 2 1;
+ .timescale 0 0;
+RS_0x7fa9193bac18/0/0 .resolv tri, L_0xf839f0, L_0xf83b30, L_0xf84290, L_0xf84410;
+RS_0x7fa9193bac18/0/4 .resolv tri, L_0xf84b80, L_0xf84c20, L_0xf85460, L_0xf85610;
+RS_0x7fa9193bac18 .resolv tri, RS_0x7fa9193bac18/0/0, RS_0x7fa9193bac18/0/4, C4<zzzzzzzz>, C4<zzzzzzzz>;
+v0xf81e10_0 .net8 "f", 7 0, RS_0x7fa9193bac18; 8 drivers
+v0xf81e90_0 .var "in", 0 0;
+v0xf81f60_0 .var "sw", 2 0;
+S_0xf4cbb0 .scope module, "d1" "demux1by8" 2 5, 3 6, S_0xf4b170;
+ .timescale 0 0;
+v0xf81740_0 .alias "f", 7 0, v0xf81e10_0;
+v0xf81800_0 .net "in", 0 0, v0xf81e90_0; 1 drivers
+v0xf818b0_0 .net "p", 0 0, L_0xf820d0; 1 drivers
+v0xf81930_0 .net "q", 0 0, L_0xf82390; 1 drivers
+v0xf81a00_0 .net "r", 0 0, L_0xf82770; 1 drivers
+v0xf81ad0_0 .net "sw", 2 0, v0xf81f60_0; 1 drivers
+v0xf81b50_0 .net "t", 0 0, L_0xf82ac0; 1 drivers
+v0xf81c20_0 .net "u", 0 0, L_0xf82df0; 1 drivers
+v0xf81d40_0 .net "v", 0 0, L_0xf83110; 1 drivers
+L_0xf82560 .part v0xf81f60_0, 2, 1;
+L_0xf82c00 .part v0xf81f60_0, 1, 1;
+L_0xf83250 .part v0xf81f60_0, 1, 1;
+L_0xf83950 .part v0xf81f60_0, 0, 1;
+L_0xf839f0 .part/pv L_0xf83480, 0, 1, 8;
+L_0xf83b30 .part/pv L_0xf83810, 1, 1, 8;
+L_0xf841f0 .part v0xf81f60_0, 0, 1;
+L_0xf84290 .part/pv L_0xf83e30, 2, 1, 8;
+L_0xf84410 .part/pv L_0xf83d90, 3, 1, 8;
+L_0xf84a80 .part v0xf81f60_0, 0, 1;
+L_0xf84b80 .part/pv L_0xf840a0, 4, 1, 8;
+L_0xf84c20 .part/pv L_0xf845f0, 5, 1, 8;
+L_0xf852b0 .part v0xf81f60_0, 0, 1;
+L_0xf85460 .part/pv L_0xf84910, 6, 1, 8;
+L_0xf85610 .part/pv L_0xf84de0, 7, 1, 8;
+S_0xf80fd0 .scope module, "d1" "Demux" 3 8, 3 1, S_0xf4cbb0;
+ .timescale 0 0;
+L_0xf81fe0 .functor XNOR 1, L_0xf82560, C4<0>, C4<0>, C4<0>;
+L_0xf82250 .functor XNOR 1, L_0xf82560, C4<1>, C4<0>, C4<0>;
+v0xf810c0_0 .net *"_s0", 0 0, C4<0>; 1 drivers
+v0xf81180_0 .net *"_s10", 0 0, L_0xf82250; 1 drivers
+v0xf81220_0 .net *"_s12", 0 0, C4<0>; 1 drivers
+v0xf812c0_0 .net *"_s2", 0 0, L_0xf81fe0; 1 drivers
+v0xf81370_0 .net *"_s4", 0 0, C4<0>; 1 drivers
+v0xf81410_0 .net *"_s8", 0 0, C4<1>; 1 drivers
+v0xf814b0_0 .alias "a0", 0 0, v0xf818b0_0;
+v0xf81530_0 .alias "a1", 0 0, v0xf81930_0;
+v0xf815e0_0 .alias "in", 0 0, v0xf81800_0;
+v0xf81660_0 .net "s", 0 0, L_0xf82560; 1 drivers
+L_0xf820d0 .functor MUXZ 1, C4<0>, v0xf81e90_0, L_0xf81fe0, C4<>;
+L_0xf82390 .functor MUXZ 1, C4<0>, v0xf81e90_0, L_0xf82250, C4<>;
+S_0xf80860 .scope module, "d2" "Demux" 3 9, 3 1, S_0xf4cbb0;
+ .timescale 0 0;
+L_0xf82640 .functor XNOR 1, L_0xf82c00, C4<0>, C4<0>, C4<0>;
+L_0xf82980 .functor XNOR 1, L_0xf82c00, C4<1>, C4<0>, C4<0>;
+v0xf80950_0 .net *"_s0", 0 0, C4<0>; 1 drivers
+v0xf80a10_0 .net *"_s10", 0 0, L_0xf82980; 1 drivers
+v0xf80ab0_0 .net *"_s12", 0 0, C4<0>; 1 drivers
+v0xf80b50_0 .net *"_s2", 0 0, L_0xf82640; 1 drivers
+v0xf80c00_0 .net *"_s4", 0 0, C4<0>; 1 drivers
+v0xf80ca0_0 .net *"_s8", 0 0, C4<1>; 1 drivers
+v0xf80d40_0 .alias "a0", 0 0, v0xf81a00_0;
+v0xf80dc0_0 .alias "a1", 0 0, v0xf81b50_0;
+v0xf80e70_0 .alias "in", 0 0, v0xf818b0_0;
+v0xf80ef0_0 .net "s", 0 0, L_0xf82c00; 1 drivers
+L_0xf82770 .functor MUXZ 1, C4<0>, L_0xf820d0, L_0xf82640, C4<>;
+L_0xf82ac0 .functor MUXZ 1, C4<0>, L_0xf820d0, L_0xf82980, C4<>;
+S_0xf80120 .scope module, "d3" "Demux" 3 10, 3 1, S_0xf4cbb0;
+ .timescale 0 0;
+L_0xf82ca0 .functor XNOR 1, L_0xf83250, C4<0>, C4<0>, C4<0>;
+L_0xf82fb0 .functor XNOR 1, L_0xf83250, C4<1>, C4<0>, C4<0>;
+v0xf80210_0 .net *"_s0", 0 0, C4<0>; 1 drivers
+v0xf802d0_0 .net *"_s10", 0 0, L_0xf82fb0; 1 drivers
+v0xf80370_0 .net *"_s12", 0 0, C4<0>; 1 drivers
+v0xf80410_0 .net *"_s2", 0 0, L_0xf82ca0; 1 drivers
+v0xf80490_0 .net *"_s4", 0 0, C4<0>; 1 drivers
+v0xf80530_0 .net *"_s8", 0 0, C4<1>; 1 drivers
+v0xf805d0_0 .alias "a0", 0 0, v0xf81c20_0;
+v0xf80650_0 .alias "a1", 0 0, v0xf81d40_0;
+v0xf80700_0 .alias "in", 0 0, v0xf81930_0;
+v0xf80780_0 .net "s", 0 0, L_0xf83250; 1 drivers
+L_0xf82df0 .functor MUXZ 1, C4<0>, L_0xf82390, L_0xf82ca0, C4<>;
+L_0xf83110 .functor MUXZ 1, C4<0>, L_0xf82390, L_0xf82fb0, C4<>;
+S_0xf7f990 .scope module, "d4" "Demux" 3 11, 3 1, S_0xf4cbb0;
+ .timescale 0 0;
+L_0xf82d90 .functor XNOR 1, L_0xf83950, C4<0>, C4<0>, C4<0>;
+L_0xf83690 .functor XNOR 1, L_0xf83950, C4<1>, C4<0>, C4<0>;
+v0xf7fa80_0 .net *"_s0", 0 0, C4<0>; 1 drivers
+v0xf7fb40_0 .net *"_s10", 0 0, L_0xf83690; 1 drivers
+v0xf7fbe0_0 .net *"_s12", 0 0, C4<0>; 1 drivers
+v0xf7fc80_0 .net *"_s2", 0 0, L_0xf82d90; 1 drivers
+v0xf7fd00_0 .net *"_s4", 0 0, C4<0>; 1 drivers
+v0xf7fda0_0 .net *"_s8", 0 0, C4<1>; 1 drivers
+v0xf7fe40_0 .net "a0", 0 0, L_0xf83480; 1 drivers
+v0xf7fee0_0 .net "a1", 0 0, L_0xf83810; 1 drivers
+v0xf7ff80_0 .alias "in", 0 0, v0xf81a00_0;
+v0xf80020_0 .net "s", 0 0, L_0xf83950; 1 drivers
+L_0xf83480 .functor MUXZ 1, C4<0>, L_0xf82770, L_0xf82d90, C4<>;
+L_0xf83810 .functor MUXZ 1, C4<0>, L_0xf82770, L_0xf83690, C4<>;
+S_0xf7f200 .scope module, "d5" "Demux" 3 12, 3 1, S_0xf4cbb0;
+ .timescale 0 0;
+L_0xf83ca0 .functor XNOR 1, L_0xf841f0, C4<0>, C4<0>, C4<0>;
+L_0xf83fb0 .functor XNOR 1, L_0xf841f0, C4<1>, C4<0>, C4<0>;
+v0xf7f2f0_0 .net *"_s0", 0 0, C4<0>; 1 drivers
+v0xf7f3b0_0 .net *"_s10", 0 0, L_0xf83fb0; 1 drivers
+v0xf7f450_0 .net *"_s12", 0 0, C4<0>; 1 drivers
+v0xf7f4f0_0 .net *"_s2", 0 0, L_0xf83ca0; 1 drivers
+v0xf7f570_0 .net *"_s4", 0 0, C4<0>; 1 drivers
+v0xf7f610_0 .net *"_s8", 0 0, C4<1>; 1 drivers
+v0xf7f6b0_0 .net "a0", 0 0, L_0xf83e30; 1 drivers
+v0xf7f750_0 .net "a1", 0 0, L_0xf83d90; 1 drivers
+v0xf7f7f0_0 .alias "in", 0 0, v0xf81b50_0;
+v0xf7f890_0 .net "s", 0 0, L_0xf841f0; 1 drivers
+L_0xf83e30 .functor MUXZ 1, C4<0>, L_0xf82ac0, L_0xf83ca0, C4<>;
+L_0xf83d90 .functor MUXZ 1, C4<0>, L_0xf82ac0, L_0xf83fb0, C4<>;
+S_0xf7ea70 .scope module, "d6" "Demux" 3 13, 3 1, S_0xf4cbb0;
+ .timescale 0 0;
+L_0xf84500 .functor XNOR 1, L_0xf84a80, C4<0>, C4<0>, C4<0>;
+L_0xf84820 .functor XNOR 1, L_0xf84a80, C4<1>, C4<0>, C4<0>;
+v0xf7eb60_0 .net *"_s0", 0 0, C4<0>; 1 drivers
+v0xf7ec20_0 .net *"_s10", 0 0, L_0xf84820; 1 drivers
+v0xf7ecc0_0 .net *"_s12", 0 0, C4<0>; 1 drivers
+v0xf7ed60_0 .net *"_s2", 0 0, L_0xf84500; 1 drivers
+v0xf7ede0_0 .net *"_s4", 0 0, C4<0>; 1 drivers
+v0xf7ee80_0 .net *"_s8", 0 0, C4<1>; 1 drivers
+v0xf7ef20_0 .net "a0", 0 0, L_0xf840a0; 1 drivers
+v0xf7efc0_0 .net "a1", 0 0, L_0xf845f0; 1 drivers
+v0xf7f060_0 .alias "in", 0 0, v0xf81c20_0;
+v0xf7f100_0 .net "s", 0 0, L_0xf84a80; 1 drivers
+L_0xf840a0 .functor MUXZ 1, C4<0>, L_0xf82df0, L_0xf84500, C4<>;
+L_0xf845f0 .functor MUXZ 1, C4<0>, L_0xf82df0, L_0xf84820, C4<>;
+S_0xf520c0 .scope module, "d7" "Demux" 3 14, 3 1, S_0xf4cbb0;
+ .timescale 0 0;
+L_0xf84b20 .functor XNOR 1, L_0xf852b0, C4<0>, C4<0>, C4<0>;
+L_0xf85030 .functor XNOR 1, L_0xf852b0, C4<1>, C4<0>, C4<0>;
+v0xf516a0_0 .net *"_s0", 0 0, C4<0>; 1 drivers
+v0xf7e3d0_0 .net *"_s10", 0 0, L_0xf85030; 1 drivers
+v0xf7e470_0 .net *"_s12", 0 0, C4<0>; 1 drivers
+v0xf7e510_0 .net *"_s2", 0 0, L_0xf84b20; 1 drivers
+v0xf7e5c0_0 .net *"_s4", 0 0, C4<0>; 1 drivers
+v0xf7e660_0 .net *"_s8", 0 0, C4<1>; 1 drivers
+v0xf7e740_0 .net "a0", 0 0, L_0xf84910; 1 drivers
+v0xf7e7e0_0 .net "a1", 0 0, L_0xf84de0; 1 drivers
+v0xf7e8d0_0 .alias "in", 0 0, v0xf81d40_0;
+v0xf7e970_0 .net "s", 0 0, L_0xf852b0; 1 drivers
+L_0xf84910 .functor MUXZ 1, C4<0>, L_0xf83110, L_0xf84b20, C4<>;
+L_0xf84de0 .functor MUXZ 1, C4<0>, L_0xf83110, L_0xf85030, C4<>;
+    .scope S_0xf4b170;
+T_0 ;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %set/v v0xf81f60_0, 0, 3;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %movi 8, 1, 3;
+    %set/v v0xf81f60_0, 8, 3;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %movi 8, 2, 3;
+    %set/v v0xf81f60_0, 8, 3;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %movi 8, 3, 3;
+    %set/v v0xf81f60_0, 8, 3;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %movi 8, 4, 3;
+    %set/v v0xf81f60_0, 8, 3;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %movi 8, 5, 3;
+    %set/v v0xf81f60_0, 8, 3;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %movi 8, 6, 3;
+    %set/v v0xf81f60_0, 8, 3;
+    %delay 10, 0;
+    %set/v v0xf81e90_0, 1, 1;
+    %set/v v0xf81f60_0, 1, 3;
+    %delay 10, 0;
+    %vpi_call 2 15 "$finish";
+    %end;
+    .thread T_0;
+    .scope S_0xf4b170;
+T_1 ;
+    %vpi_call 2 18 "$monitor", $time, " in %b swit %b out %b", v0xf81e90_0, v0xf81f60_0, v0xf81e10_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "Demuxtest.v";
+    "Demux.v";

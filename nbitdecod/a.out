@@ -1,0 +1,48 @@
+#! /usr/local/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x23692f0 .scope module, "decodnbit" "decodnbit" 2 1;
+ .timescale 0 0;
+P_0x238c128 .param/l "n" 2 2, +C4<0100>;
+v0x2368a20_0 .net "a", 3 0, C4<zzzz>; 0 drivers
+v0x239b540_0 .net "d", 15 0, v0x239b730_0; 1 drivers
+v0x239b5e0_0 .var/i "i", 31 0;
+v0x239b680_0 .var "place", 0 0;
+v0x239b730_0 .var "x", 15 0;
+E_0x2368ca0 .event edge, v0x239b5e0_0, v0x2368a20_0, v0x239b680_0;
+    .scope S_0x23692f0;
+T_0 ;
+    %wait E_0x2368ca0;
+    %movi 8, 3, 32;
+    %set/v v0x239b5e0_0, 8, 32;
+T_0.0 ;
+    %load/v 8, v0x239b5e0_0, 32;
+    %cmp/s 0, 8, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_0.1, 5;
+    %ix/getv/s 1, v0x239b5e0_0;
+    %jmp/1 T_0.2, 4;
+    %load/x1p 8, v0x2368a20_0, 1;
+    %jmp T_0.3;
+T_0.2 ;
+    %mov 8, 2, 1;
+T_0.3 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0xz  T_0.4, 8;
+    %load/v 8, v0x239b680_0, 1;
+    %mov 9, 0, 32;
+    %movi 41, 2, 33;
+    %load/v 74, v0x239b5e0_0, 32;
+    %mov 106, 105, 1;
+    %pow/s 41, 74, 33;
+    %add 8, 41, 33;
+    %set/v v0x239b680_0, 8, 1;
+T_0.4 ;
+    %load/v 8, v0x239b5e0_0, 32;
+    %subi 8, 1, 32;
+    %set/v v0x239b5e0_0, 8, 32;
+    %jmp T_0.0;
+T_0.1 ;
